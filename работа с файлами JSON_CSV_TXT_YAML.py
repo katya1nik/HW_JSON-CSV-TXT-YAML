@@ -11,22 +11,57 @@ json_string = """
 
 # Создание функции для чтения json
 
-def read_json(file_path: str, encoding: str = "utf-8") -> list[str]:
+# def read_json(file_path: str, encoding: str = "utf-8") -> list[str]:
+#     """
+#     Функция чтения json файла.
+#     :param file_path: путь к файлу (в данном случае название файла)
+#     :param encoding: кодировка
+#     """
+#     with open(file_path, 'r', encoding=encoding) as file:
+#         return json.load(file)
+    
+# result = read_json("name.json")
+# print(result)
+
+
+# Создание функции для записи в файл json
+def write_json(*data: dict, file_path: str, encoding: str = "utf-8") -> None:
     """
-    Функция чтения json файла.
+    Функция записи в json файл.
+    :param data: данные для записи
     :param file_path: путь к файлу (в данном случае название файла)
     :param encoding: кодировка
     """
-    with open(file_path, 'r', encoding=encoding) as file:
-        return json.load(file)
+    with open(file_path, 'w', encoding=encoding) as file:
+        json.dump(data, file, ensure_ascii=False, indent=4)
     
-result = read_json("name.json")
-print(result)
+# Создание функции для записи в файл json
+def write_json(*data: dict, file_path: str, encoding: str = "utf-8") -> None:
+    """
+    Функция записи в json файл.
+    :param data: данные для записи
+    :param file_path: путь к файлу (в данном случае название файла)
+    :param encoding: кодировка
+    """
+    with open(file_path, 'w', encoding=encoding) as file:
+        json.dump(data, file, ensure_ascii=False, indent=4)
 
-# запись в файл
-# with open('name.json', 'w', encoding='utf-8') as file:
+# Создание функции для записи в файл json
+def write_json(*data: dict, file_path: str, encoding: str = "utf-8") -> None:
+    """
+    Функция записи в json файл.
+    :param data: данные для записи
+    :param file_path: путь к файлу (в данном случае название файла)
+    :param encoding: кодировка
+    """
+    with open(file_path, 'w', encoding=encoding) as file:
+        json.dump(data, file, ensure_ascii=False, indent=4)
 
-#     json.dump(python_data, file, ensure_ascii=False, indent=4)
+name1={"name": "Никулина Екатерина Александровна"}
+name2={"name": "Иванов Иван Иванович"}
+
+write_json(name1, name2, file_path='names_1.json')
+
 
 # дозапись в файл
 # with open('name.json', 'r', encoding='utf-8') as file:
