@@ -99,12 +99,6 @@ name_list = [
 # write_csv(name_list, file_path='name.csv')
 
 
-# new_name = ["Сидоров", "Сидор", "Сидорович"]
-
-# with open("name.csv", "a", encoding="utf-8-sig") as file:
-#     writer = csv.writer(file, delimiter=";", lineterminator="\n")
-#     writer.writerow(name_list)
-
 # Создание функции для чтения CSV
 def read_csv(file_path, delimiter=';', encoding: str ='utf-8-sig')-> list[str]:
     """
@@ -116,13 +110,24 @@ def read_csv(file_path, delimiter=';', encoding: str ='utf-8-sig')-> list[str]:
     with open(file_path, 'r', encoding=encoding) as file:
         reader = csv.reader(file, delimiter=delimiter)
         return list(reader)
-    
+name_list = read_csv("name.csv")
+# print(name_list)
 
 
-with open("name.csv", "r", encoding="utf-8-sig") as file:
-    reader = csv.reader(file, delimiter=";")
-    name_list = list(reader)
-    
+# Создание функции для дозаписи в файл CSV
+new_name = ["Иванова", "Мария", "Петровна"]
+def append_csv(file_path, data, delimiter=';', encoding: str ='utf-8-sig') -> None:
+    """
+    Функция дозаписи в csv файл.
+    :param file_path: путь к файлу (в данном случае название файла)
+    :param data: данные для записи
+    :param delimiter: разделитель
+    :param encoding: кодировка
+    """
+    with open(file_path, 'a', encoding=encoding) as file:
+        writer = csv.writer(file, delimiter=delimiter, lineterminator="\n")
+        writer.writerow(data)
+append_csv("name.csv", new_name)
 result = read_csv("name.csv")
 print(result)
 
