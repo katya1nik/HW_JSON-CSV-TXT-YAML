@@ -2,35 +2,35 @@
 import json
 
 
-json_string = """
-[
-    "Иванов Иван Иванович",
-    "Петров Петр Петрович"
-]
-"""
+# json_string = """
+# [
+#     "Иванов Иван Иванович",
+#     "Петров Петр Петрович"
+# ]
+# """
 
-python_data = json.loads(json_string)
-print(python_data)
+# python_data = json.loads(json_string)
+# print(python_data)
 
-json_string = json.dumps(python_data, ensure_ascii=False, indent=4)
-print(json_string)
+# json_string = json.dumps(python_data, ensure_ascii=False, indent=4)
+# print(json_string)
 
 
  #  Создание функции для записи в файл json
-def write_json(*data: str, file_path: str, encoding: str = "utf-8") -> None:
-    """
-    Функция записи в json файл.
-    :param data: данные для записи
-    :param file_path: путь к файлу (в данном случае название файла)
-    :param encoding: кодировка
-    """
-    with open(file_path, 'w', encoding=encoding) as file:
-        json.dump(data, file, ensure_ascii=False, indent=4)
+# def write_json(*data: str, file_path: str, encoding: str = "utf-8") -> None:
+#     """
+#     Функция записи в json файл.
+#     :param data: данные для записи
+#     :param file_path: путь к файлу (в данном случае название файла)
+#     :param encoding: кодировка
+#     """
+#     with open(file_path, 'w', encoding=encoding) as file:
+#         json.dump(data, file, ensure_ascii=False, indent=4)
 
-name1="Никулина Екатерина Александровна"
-name2="Иванов Иван Иванович"
+# name1="Никулина Екатерина Александровна"
+# name2="Иванов Иван Иванович"
 
-write_json(name1, name2, file_path='name.json')
+# write_json(name1, name2, file_path='name.json')
 
 # Создание функции для чтения json
 
@@ -48,14 +48,14 @@ write_json(name1, name2, file_path='name.json')
 
 
 # Создание функции для дозаписи в файл JSON:
-# with open('name.json', 'r', encoding='utf-8') as file:
-#     python_data = json.load(file)
+with open('name.json', 'r', encoding='utf-8') as file:
+    python_data = json.load(file)
 
-# new_name = "Новое имя5"
-# python_data.append(new_name)
+new_name = "Новое имя"
+python_data.append(new_name)
 
-# with open('name.json', 'w', encoding='utf-8') as file:
-#     json.dump(python_data, file, ensure_ascii=False, indent=4)
+with open('name.json', 'w', encoding='utf-8') as file:
+    json.dump(python_data, file, ensure_ascii=False, indent=4)
 
 # def append_json(*data: list[dict], file_path: str, encoding: str = 'utf-8', indent: int) -> None:
 #     with open(file_path, 'r', encoding=encoding) as file:
