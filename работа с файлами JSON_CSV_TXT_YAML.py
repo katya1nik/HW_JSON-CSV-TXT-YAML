@@ -51,7 +51,7 @@ import json
 with open('name.json', 'r', encoding='utf-8') as file:
     python_data = json.load(file)
 
-new_name = "Новое имя"
+new_name = "Новое имя 2"
 python_data.append(new_name)
 
 with open('name.json', 'w', encoding='utf-8') as file:
