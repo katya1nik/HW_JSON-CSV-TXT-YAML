@@ -136,22 +136,22 @@ import csv
 txt_file = "name.txt"
 
 # Функция для записи в файл TXT
-# def write_txt(*data: str, file_path, mode: str = "w", encoding: str = "utf-8") -> None:
-#     """
-#     Функция записи в txt файл.
-#     :param data: данные для записи
-#     :param file: файл для записи
-# """
+def write_txt(*data: str, file_path, mode: str = "w", encoding: str = "utf-8") -> None:
+    """
+    Функция записи в txt файл.
+    :param data: данные для записи
+    :param file: файл для записи
+"""
     
-#     with open(file_path, mode, encoding=encoding) as file:
-#         for line in data:
-#             file.write(line + "\n")
+    with open(file_path, mode, encoding=encoding) as file:
+        for line in data:
+            file.write(line + "\n")
 
 
-# data = ["В лесу родилась елочка,", "В лесу она росла,",]
+data = ["В лесу родилась елочка,", "В лесу она росла,",]
 
-# write_txt(*data, file_path="name.txt")
-# print("name.txt",*data)
+write_txt(*data, file_path="name.txt")
+print("name.txt",*data)
 
 # Функция дозаписи в файл TXT
 def append_txt(*data: str, file_path, mode: str = "a", encoding: str = "utf-8") -> None:
@@ -168,3 +168,13 @@ data = ["Зимой и летом стройная,", "Зеленая была."
 append_txt(*data, file_path="name.txt")
 print("name.txt",*data)
 
+# Функция чтения из файла TXT
+def read_txt(file_path, encoding: str = "utf-8") -> list[str]:
+    """
+    Функция чтения из txt файла.
+    """
+    with open(file_path, encoding=encoding) as file:
+        return [line.strip() for line in file.readlines()]
+
+result = read_txt("name.txt")
+print(result)
