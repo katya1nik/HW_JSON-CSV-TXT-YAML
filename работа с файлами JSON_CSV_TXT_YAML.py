@@ -136,45 +136,79 @@ import csv
 txt_file = "name.txt"
 
 # Функция для записи в файл TXT
-def write_txt(*data: str, file_path, mode: str = "w", encoding: str = "utf-8") -> None:
-    """
-    Функция записи в txt файл.
-    :param data: данные для записи
-    :param file: файл для записи
-"""
+# def write_txt(*data: str, file_path, mode: str = "w", encoding: str = "utf-8") -> None:
+#     """
+#     Функция записи в txt файл.
+#     :param data: данные для записи
+#     :param file: файл для записи
+# """
     
-    with open(file_path, mode, encoding=encoding) as file:
-        for line in data:
-            file.write(line + "\n")
+#     with open(file_path, mode, encoding=encoding) as file:
+#         for line in data:
+#             file.write(line + "\n")
 
 
-data = ["В лесу родилась елочка,", "В лесу она росла,",]
+# data = ["В лесу родилась елочка,", "В лесу она росла,",]
 
-write_txt(*data, file_path="name.txt")
-print("name.txt",*data)
+# write_txt(*data, file_path="name.txt")
+# print("name.txt",*data)
 
-# Функция дозаписи в файл TXT
-def append_txt(*data: str, file_path, mode: str = "a", encoding: str = "utf-8") -> None:
+# # Функция дозаписи в файл TXT
+# def append_txt(*data: str, file_path, mode: str = "a", encoding: str = "utf-8") -> None:
+#     """
+#     Функция дозаписи в txt файл.
+#     :param data: данные для записи
+#     :param file: файл для записи
+# """
+#     with open(file_path, mode, encoding=encoding) as file:
+#         for line in data:
+#             file.write(line + "\n")
+
+# data = ["Зимой и летом стройная,", "Зеленая была."]
+# append_txt(*data, file_path="name.txt")
+# print("name.txt",*data)
+
+# # Функция чтения из файла TXT
+# def read_txt(file_path, encoding: str = "utf-8") -> list[str]:
+#     """
+#     Функция чтения из txt файла.
+#     """
+#     with open(file_path, encoding=encoding) as file:
+#         return [line.strip() for line in file.readlines()]
+
+# result = read_txt("name.txt")
+# print(result)
+
+# Работа с файлами YAML
+import yaml
+
+config = {
+    'app_name': 'Погодное приложение',
+    'version': '1.0',
+    'admin': 'Екатерина Никулина',
+    'settings': {
+        'theme': 'light',
+        'language': 'ru',
+        'notifications': True
+    },
+    'users': [
+        'admin',
+        'moderator',
+        'guest'
+    ]
+}
+
+
+with open('weather_config.yaml', 'w', encoding='utf-8') as file:
+    yaml.dump(config, file, default_flow_style=False, allow_unicode=True)
+
+# Функция чтения из YAML
+def read_yaml(file_path: str):
     """
-    Функция дозаписи в txt файл.
-    :param data: данные для записи
-    :param file: файл для записи
-"""
-    with open(file_path, mode, encoding=encoding) as file:
-        for line in data:
-            file.write(line + "\n")
-
-data = ["Зимой и летом стройная,", "Зеленая была."]
-append_txt(*data, file_path="name.txt")
-print("name.txt",*data)
-
-# Функция чтения из файла TXT
-def read_txt(file_path, encoding: str = "utf-8") -> list[str]:
+    Функция чтения YAML файла
     """
-    Функция чтения из txt файла.
-    """
-    with open(file_path, encoding=encoding) as file:
-        return [line.strip() for line in file.readlines()]
-
-result = read_txt("name.txt")
-print(result)
+    with open(file_path, 'r', encoding='utf-8') as file:
+        return yaml.safe_load(file)
+    
+data = read_yaml('weather_config.yaml')
+print(data)
